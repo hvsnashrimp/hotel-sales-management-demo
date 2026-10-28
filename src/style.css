@@ -444,7 +444,7 @@
         }
 
         .btn-submit:hover {
-            background-color: var(--palette-black);
+            background-color: var(--palette-sky);
         }
 
         .btn-cancel {
