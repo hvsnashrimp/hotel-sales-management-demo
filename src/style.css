@@ -1975,7 +1975,7 @@
             min-height: 46px;
             margin-top: 4px;
             border-radius: 4px;
-            background: #00B8C4;
+            background: var(--palette-accent);
             COLOR: black;
         }
 
