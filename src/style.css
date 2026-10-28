@@ -1248,15 +1248,8 @@
         }
         
         body {
-            background-color: #0A0A0A;
-            color: #F5F5F5;
-            --palette-accent: #00B8C4;
-            --palette-sky: #C6FF00;
-            --palette-cream: #F5F5F5;
-            --palette-olive: #252525;
-            --palette-black: #0A0A0A;
-            --glow-cyan: 0 0 16px rgba(0, 184, 196, 0.22);
-            --glow-green: 0 0 14px rgba(198, 255, 0, 0.18);
+            background-color: var(--palette-black);
+            color: var(--palette-cream);
         }
 
         .sidebar {

@@ -577,17 +577,17 @@ const categoryRevenue = computed(() => {
   const entries = [...totals.entries()].filter(([, revenue]) => revenue > 0)
   const totalRevenue = entries.reduce((sum, [, revenue]) => sum + revenue, 0)
   const colors = {
-    Corporate: '#00B8C4',
-    Gov: '#C6FF00',
-    Government: '#C6FF00',
-    Others: '#F5F5F5'
+    Corporate: 'var(--palette-accent)',
+    Gov: 'var(--palette-sky)',
+    Government: 'var(--palette-sky)',
+    Others: 'var(--palette-cream)'
   }
 
   return entries.map(([category, revenue]) => ({
     category,
     revenue,
     percentage: (revenue / totalRevenue) * 100,
-    color: colors[category] || '#D5D5DC'
+    color: colors[category] || 'var(--palette-olive)'
   }))
 })
 
