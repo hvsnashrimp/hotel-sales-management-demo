@@ -1379,9 +1379,9 @@
 
         .btn-primary,
         .btn-submit {
-            background: #00B8C4;
-            color: #0A0A0A;
-            box-shadow: 0 0 12px rgba(0, 184, 196, 0.2);
+            background: var(--palette-accent);
+            color: var(--palette-black);
+            box-shadow: var(--glow-cyan);
         }
 
         .btn-edit {
@@ -1398,8 +1398,8 @@
         .btn-submit:hover,
         .btn-edit:hover,
         .btn-delete:hover {
-            background: #C6FF00;
-            color: #0A0A0A;
+            background: var(--palette-sky);
+            color: var(--palette-black);
             box-shadow: var(--glow-green);
         }
 
