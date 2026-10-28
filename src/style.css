@@ -1,7 +1,7 @@
 :root {
     --palette-accent: #3a4984;
     --palette-black: #0A0A0A;
-    --palette-acidgreen: #a9d9dc;
+    --palette-sky: #a9d9dc;
     --palette-grey: #252525;
     --palette-cream: #F5F5F5;
     --palette-olive: #6B705C;
@@ -334,7 +334,7 @@
         .btn-delete-salesperson:focus-visible {
             outline: 2px solid #19a7a159;
             outline-offset: 2px;
-            border-color: var(--palette-acidgreen);
+            border-color: var(--palette-sky);
         }
 
         .salesperson-picker-arrow {
@@ -455,7 +455,7 @@
         }
 
         .btn-edit {
-            background-color: var(--palette-acidgreen);
+            background-color: var(--palette-sky);
             color: var(--palette-black);
             margin-right: 4px;
             padding: 5px 9px;
@@ -551,7 +551,7 @@
         }
 
         .rev-zero {
-            color: var(--palette-acidgreen);
+            color: var(--palette-sky);
         }
 
         .print-report-header,
@@ -1072,7 +1072,7 @@
         .metric-card {
             min-width: 0;
             background: var(--palette-cream);
-            border-left: 4px solid var(--palette-acidgreen);
+            border-left: 4px solid var(--palette-sky);
             padding: 12px;
             border-radius: 4px;
         }
@@ -1130,7 +1130,7 @@
         }
 
         .account-type-summary {
-            border-top: 1px solid var(--palette-acidgreen);
+            border-top: 1px solid var(--palette-sky);
             margin-top: 14px;
             padding-top: 12px;
         }
@@ -1230,7 +1230,7 @@
             gap: 10px;
             margin-bottom: 8px;
             padding-bottom: 6px;
-            border-bottom: 1px solid var(--palette-acidgreen);
+            border-bottom: 1px solid var(--palette-sky);
         }
 
         .pie-chart-legend-label {
@@ -1251,7 +1251,7 @@
             background-color: #0A0A0A;
             color: #F5F5F5;
             --palette-accent: #00B8C4;
-            --palette-acidgreen: #C6FF00;
+            --palette-sky: #C6FF00;
             --palette-cream: #F5F5F5;
             --palette-olive: #252525;
             --palette-black: #0A0A0A;
@@ -1980,7 +1980,7 @@
         }
 
         .login-submit:hover {
-            background: #C6FF00;
+            background: var(--palette-sky);
         }
 
         .login-submit:disabled {
