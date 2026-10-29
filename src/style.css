@@ -723,7 +723,7 @@
 
         .sale-card-details dd {
             margin: 1px 0 0;
-            color: var(--palette-cream) bold;
+            color: bold var(--palette-cream);
             font-size: 12px;
             overflow-wrap: anywhere;
         }
