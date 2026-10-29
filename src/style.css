@@ -833,13 +833,13 @@
         }
 
         .sale-card-details dt {
-            color: var(--palette-olive);
+            color: var(--palette-cream);
             font-size: 11px;
         }
 
         .sale-card-details dd {
             margin: 1px 0 0;
-            color: var(--palette-black);
+            color: var(--palette-cream);
             font-size: 12px;
             overflow-wrap: anywhere;
         }
