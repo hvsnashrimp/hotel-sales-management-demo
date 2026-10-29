@@ -944,9 +944,9 @@
         }
 
         .monthly-summary-filter select {
-            background-color: #252525;
-            color: var(--palette-cream);
-            border-color: #3a4984;
+            background-color: white;
+            color: var(--palette-black);
+            border-color: #CFD8E3;
         }
 
         .monthly-metrics {
