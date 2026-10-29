@@ -826,7 +826,7 @@
         }
 
         .monthly-line-point text {
-            fill: var(--palette-black);
+            fill: var(--palette-cream);
             font-size: 12px;
             pointer-events: none;
         }
@@ -881,7 +881,7 @@
 
         .monthly-bar-label {
             margin-top: 4px;
-            color: var(--palette-black);
+            color: var(--palette-cream);
             font-size: 12px;
         }
 
@@ -1013,6 +1013,23 @@
 
         .dashboard-charts > .analytics-card {
             background-color: #252525;
+        }
+
+        .dashboard-charts > .analytics-card h3,
+        .dashboard-charts > .analytics-card .yearly-chart-year label,
+        .dashboard-charts > .analytics-card .pie-chart-legend,
+        .dashboard-charts > .analytics-card .pie-chart-legend strong,
+        .dashboard-charts > .analytics-card .pie-chart-legend-label,
+        .dashboard-charts > .analytics-card .account-type-summary h4 {
+            color: var(--palette-cream);
+        }
+
+        .dashboard-charts > .analytics-card .monthly-line-baseline {
+            stroke: rgba(245, 245, 245, 0.3);
+        }
+
+        .dashboard-charts > .analytics-card .pie-chart-legend-item {
+            border-bottom-color: rgba(245, 245, 245, 0.3);
         }
 
         .account-type-summary {
