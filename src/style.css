@@ -686,7 +686,7 @@
             align-items: stretch;
             gap: 5px;
             box-sizing: border-box;
-            background: #F5F5F5;
+            background: var(--palette-grey);
             border: 1px solid #DCE4ED;
             border-left: 6px solid #77717D;
             border-radius: 12px;
