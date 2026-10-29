@@ -1252,11 +1252,6 @@
             color: var(--palette-cream);
         }
 
-        .sidebar {
-            background: #252525;
-            border-right: 1px solid rgba(245, 245, 245, 0.12);
-        }
-
         .brand small {
             color: #C6FF00;
         }
@@ -1269,7 +1264,7 @@
         .card {
             background: #F5F5F5;
             color: #252525;
-            border-color: #00B8C4;
+            border-color: var(--palette-accent);
             box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3), 0 0 14px rgba(0, 184, 196, 0.1);
         }
 
@@ -1361,7 +1356,7 @@
         }
 
         .salesperson-add button {
-            background: #00B8C4;
+            background: var(--palette-accent);
             color: #0A0A0A;
         }
 
@@ -1385,7 +1380,7 @@
         }
 
         .btn-edit {
-            background: #C6FF00;
+            background: var(--palette-sky);
             color: #0A0A0A;
         }
 
