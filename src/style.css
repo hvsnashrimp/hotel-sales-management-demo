@@ -939,6 +939,16 @@
             min-width: 0;
         }
 
+        .monthly-summary-filter label {
+            color: var(--palette-cream);
+        }
+
+        .monthly-summary-filter select {
+            background-color: #252525;
+            color: var(--palette-cream);
+            border-color: #3a4984;
+        }
+
         .monthly-metrics {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
