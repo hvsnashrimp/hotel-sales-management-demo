@@ -193,6 +193,7 @@
 
         /* Ensure the workspace panel and dashboard section cards are flexible and don't overflow */
         .workspace-panel#reportPage>.card {
+            background: var(--palette-grey);
             display: flex;
             flex-direction: column;
             min-height: 0;
@@ -778,14 +779,6 @@
             flex: 1;
         }
 
-        .monthly-bar-chart {
-            height: 200px;
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            padding-top: 15px;
-        }
-
         .monthly-line-chart {
             height: 220px;
             width: 100%;
@@ -1030,7 +1023,7 @@
         }
 
         .account-type-count {
-            background: var(--palette-accent);
+            background: var(--palette-cream);
             border-radius: 4px;
             padding: 10px 12px;
         }
