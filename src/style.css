@@ -1438,6 +1438,24 @@
             color: #fff;
         }
 
+        #reportPage > .card {
+            background-color: #252525;
+            border-color: #3a4984;
+        }
+
+        #reportPage > .card > .section-heading h2 {
+            color: #F5F5F5;
+        }
+
+        #reportPage > .card .filter-bar {
+            background-color: #252525;
+            border-color: #3a4984;
+        }
+
+        #reportPage > .card .filter-bar label {
+            color: #F5F5F5;
+        }
+
         @media (max-width: 480px) {
             .login-page {
                 padding: 16px;
