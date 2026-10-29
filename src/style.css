@@ -1444,7 +1444,7 @@
         }
 
         #reportPage > .card > .section-heading h2 {
-            color: #F5F5F5;
+            color: var(--pallete-black);
         }
 
         #reportPage > .card .filter-bar {
