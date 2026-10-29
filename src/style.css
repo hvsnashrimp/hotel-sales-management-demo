@@ -946,7 +946,7 @@
 
         .metric-card {
             min-width: 0;
-            background: var(--palette-cream);
+            background: var(--palette-grey);
             border-left: 4px solid var(--palette-sky);
             padding: 12px;
             border-radius: 4px;
