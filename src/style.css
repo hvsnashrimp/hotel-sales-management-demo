@@ -763,7 +763,7 @@
         }
 
         .sale-card-company {
-            color: var(--palette-black);
+            color: var(--palette-cream);
             font-size: 16px;
             font-weight: 700;
             overflow-wrap: anywhere;
@@ -787,7 +787,7 @@
         }
 
         .sale-card-event {
-            color: var(--palette-accent);
+            color: var(--palette-cream);
             font-size: 13px;
             margin-top: 3px;
         }
