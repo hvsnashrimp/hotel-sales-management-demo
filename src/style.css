@@ -1004,6 +1004,11 @@
             box-sizing: border-box;
         }
 
+        .analytics-card.monthly-summary {
+            background-color: #252525;
+            border-color: #3a4984;
+        }
+
         .account-type-summary {
             border-top: 1px solid var(--palette-sky);
             margin-top: 14px;
