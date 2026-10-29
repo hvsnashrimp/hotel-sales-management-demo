@@ -787,7 +787,7 @@
         }
 
         .sale-card-event {
-            color: var(--palette-cream);
+            color: var(--palette-accent);
             font-size: 13px;
             margin-top: 3px;
         }
