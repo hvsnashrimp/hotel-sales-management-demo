@@ -185,19 +185,6 @@
             color: white;
         }
 
-        /* Ensure cards within the workspace panel and dashboard section don't overflow */
-        .workspace-panel .card,
-        .dashboard-section .card {
-            box-sizing: border-box;
-        }
-
-        /* Ensure the workspace panel and dashboard section cards are flexible and don't overflow */
-        .workspace-panel#reportPage>.card {
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-        }
-
         .dashboard-section {
             margin-top: 20px;
         }
@@ -585,17 +572,6 @@
             display: none;
         }
 
-        .workspace-panel#reportPage .sales-cards,
-        .workspace-panel#reportPage .table-responsive {
-            flex: 1 1 auto;
-            min-height: 0;
-            overflow-x: auto;
-        }
-        
-
-        .workspace-panel#reportPage .sales-cards {
-            overscroll-behavior: contain;
-        }
 
         .sale-card {
             display: grid;
