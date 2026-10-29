@@ -696,15 +696,15 @@
         }
 
         .sale-card-room {
-            border-left-color: #9BBE33;
+            border-left-color: var(--palette-accent);
         }
 
         .sale-card-banquet {
-            border-left-color: #3B9FA5;
+            border-left-color: var(--palette-sky);
         }
 
         .sale-card-other {
-            border-left-color: #77717D;
+            border-left-color: var(--palette-grey);
         }
 
         .sale-card-header {
