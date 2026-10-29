@@ -14,8 +14,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            background-color: var(--palette-grey);
-            color: var(--palette-grey);
+            background-color: var(--palette-black);
+            color: var(--palette-cream);
         }
 
         /* Layout Styles */
