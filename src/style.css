@@ -1030,7 +1030,7 @@
         }
 
         .account-type-count {
-            background: white;
+            background: var(--palette-accent);
             border-radius: 4px;
             padding: 10px 12px;
         }
