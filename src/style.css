@@ -924,7 +924,7 @@
 
         .monthly-line {
             fill: none;
-            stroke: #00B8C4;
+            stroke: var(--palette-accent);
             stroke-linecap: round;
             stroke-linejoin: round;
             stroke-width: 3;
