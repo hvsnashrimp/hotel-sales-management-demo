@@ -40,8 +40,6 @@ const salespersonData = ref([])
 const accountTypeData = ref([])
 const currentSalesPage = ref(1)
 const isMobileViewport = ref(false)
-const salesView = ref('cards')
-const isPrintingReport = ref(false)
 const saleEntryCard = ref(null)
 const salesListCard = ref(null)
 const editPlaceholderHeight = ref(0)
@@ -101,7 +99,6 @@ function syncSalesListPanelHeight() {
   salesListCard.value.style.height = `${saleEntryCard.value.getBoundingClientRect().height}px`
 }
 
-watch(salesView, syncSalesListPanelHeight)
 watch(isEditing, async () => {
   await nextTick()
   syncSalesListPanelHeight()
@@ -208,7 +205,6 @@ const salesPageSize = computed(() => (
 const totalPages = computed(() => Math.max(1, Math.ceil(filteredSales.value.length / salesPageSize.value)))
 
 const paginatedSales = computed(() => {
-  if (isPrintingReport.value) return filteredSales.value
   const start = (currentSalesPage.value - 1) * salesPageSize.value
   return filteredSales.value.slice(start, start + salesPageSize.value)
 })
@@ -237,24 +233,11 @@ function resetFilters() {
   currentSalesPage.value = 1
 }
 
-function setSalesView(view) {
-  salesView.value = view
-}
-
 // Form Date In change auto-fills Date Out
 function handleDateInChange(e) {
   if (!form.value.date_out) {
     form.value.date_out = e.target.value
   }
-}
-
-function formatDateDisplay(dateStr) {
-  if (!dateStr) return '-'
-  const date = dateStr.split('T')[0]
-  const match = date.match(/^(\d{4})-(\d{2})-(\d{2})$/)
-  if (!match) return date
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  return `${Number(match[3])}-${months[Number(match[2]) - 1]}`
 }
 
 function formatSaleDateRange(dateIn, dateOut) {
@@ -398,54 +381,6 @@ async function removeSalesperson() {
   salespersonAddStatus.value = `${salesperson.name} archived in this browser demo.`
   nextTick(() => salespersonPicker.value?.querySelector('.salesperson-picker-trigger')?.focus())
 }
-
-function printSalesReport() {
-  isPrintingReport.value = true
-  salesView.value = 'table'
-  nextTick(() => {
-    window.print()
-    setTimeout(() => {
-      isPrintingReport.value = false
-      salesView.value = 'cards'
-    }, 500)
-  })
-}
-
-// Summary computations for table footer
-const tableTotals = computed(() => {
-  let pax = 0, rooms = 0, roomRev = 0, banquetRev = 0, otherRev = 0, confirm = 0
-  filteredSales.value.forEach(s => {
-    pax += Number(s.pax) || 0
-    rooms += Number(s.rooms_count) || 0
-    const rev = Number(s.revenue) || 0
-    confirm += rev
-    const src = String(s.source_id)
-    if (src === '1') roomRev += rev
-    else if (src === '2') banquetRev += rev
-    else otherRev += rev
-  })
-  return { pax, rooms, roomRev, banquetRev, otherRev, confirm }
-})
-
-const reportSalespersonName = computed(() => filterSalesperson.value)
-
-const reportPeriodLabel = computed(() => {
-  if (!filterMonth.value) return 'All Dates'
-  const [year, month] = filterMonth.value.split('-')
-  const lastDay = new Date(Number(year), Number(month), 0).getDate()
-  return `${1}-${lastDay}/${Number(month)}/${year}`
-})
-
-const reportAccountTypeCounts = computed(() => {
-  const counts = { existing: 0, new: 0, growth: 0 }
-  filteredSales.value.forEach(sale => {
-    const type = (sale.account_type || '').toLowerCase()
-    if (type === 'new') counts.new++
-    else if (type === 'growth') counts.growth++
-    else counts.existing++
-  })
-  return counts
-})
 
 // Dashboard computations
 const availableYears = computed(() => {
@@ -934,101 +869,8 @@ const hoveredCategoryData = computed(() => categoryRevenue.value.find(
               </div>
             </div>
 
-            <!-- TABLE VIEW -->
-            <div class="print-report-header">
-              <strong>Demo Hotel</strong>
-              <strong>MONTHLY REPORT</strong>
-              <div class="print-report-meta">
-                <span>Post Momentum - Top 20 Actual Business Generated For The Month</span>
-                <span>Name: {{ reportSalespersonName }}</span>
-                <span>Date: {{ reportPeriodLabel }}</span>
-              </div>
-            </div>
-            <div id="salesTableView" class="table-responsive" :hidden="salesView !== 'table' && !isPrintingReport">
-              <table>
-                <thead>
-                  <tr>
-                    <th rowspan="2" style="width: 30px;">#</th>
-                    <th rowspan="2" style="min-width: 180px;">Company</th>
-                    <th rowspan="2" class="salesperson-column">Salesperson</th>
-                    <th colspan="2">Date</th>
-                    <th colspan="2">Details</th>
-                    <th rowspan="2">Rates Quoted</th>
-                    <th colspan="4">Revenue (RM)</th>
-                    <th :colspan="isPrintingReport ? 1 : 2" class="classification-heading">Classification</th>
-                    <th rowspan="2" style="width: 90px;">Action</th>
-                  </tr>
-                  <tr>
-                    <th class="sub-header">In</th>
-                    <th class="sub-header">Out</th>
-                    <th class="sub-header">Pax</th>
-                    <th class="sub-header">Room</th>
-                    <th class="sub-header">Room</th>
-                    <th class="sub-header">Banquet</th>
-                    <th class="sub-header">Other</th>
-                    <th class="sub-header">Total Confirm</th>
-                    <th class="sub-header">A/C Type</th>
-                    <th class="sub-header status-column">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-if="filteredSales.length === 0">
-                    <td colspan="16" style="text-align:center; padding: 20px;">No sales records found matching the criteria.</td>
-                  </tr>
-                  <tr v-for="(s, idx) in paginatedSales" :key="s.id">
-                    <td>{{ isPrintingReport ? idx + 1 : (currentSalesPage - 1) * salesPageSize + idx + 1 }}</td>
-                    <td class="text-left"><strong>{{ s.company_name }}</strong><br><small style="color:var(--palette-olive);" v-if="s.event_type">{{ s.event_type }}</small></td>
-                    <td class="salesperson-column">{{ s.salesperson || '-' }}</td>
-                    <td>{{ formatDateDisplay(s.date_in) }}</td>
-                    <td>{{ formatDateDisplay(s.date_out) }}</td>
-                    <td>{{ s.pax || '-' }}</td>
-                    <td>{{ s.rooms_count || '-' }}</td>
-                    <td class="text-right">{{ s.rate_quoted ? Number(s.rate_quoted).toFixed(2) : '-' }}</td>
-                    <td class="text-right">{{ String(s.source_id) === '1' ? Number(s.revenue).toFixed(2) : '-' }}</td>
-                    <td class="text-right">{{ String(s.source_id) === '2' ? Number(s.revenue).toFixed(2) : '-' }}</td>
-                    <td class="text-right">{{ String(s.source_id) === '3' ? Number(s.revenue).toFixed(2) : '-' }}</td>
-                    <td class="text-right" style="font-weight: bold;">{{ Number(s.revenue).toFixed(2) }}</td>
-                    <td>{{ s.account_type || 'Existing' }}</td>
-                    <td class="status-column">{{ s.company_type || 'Corporate' }}</td>
-                    <td>
-                      <button class="btn-edit" @click="populateEditForm(s.id)">Edit</button>
-                      <button class="btn-delete" @click="requestSaleRemoval(s.id)">Delete</button>
-                    </td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="5" class="label-foot">TOTAL</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{ tableTotals.confirm.toFixed(2) }}</td>
-                    <td v-if="!isPrintingReport" colspan="3"></td>
-                    <td v-else></td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-            <div class="print-report-summary">
-              <div class="print-account-summary">
-                <strong>Monthly Summary of Account Type</strong>
-                <div><span>Existing Accounts</span><strong>{{ reportAccountTypeCounts.existing }}</strong></div>
-                <div><span>Growth Accounts</span><strong>{{ reportAccountTypeCounts.growth }}</strong></div>
-                <div><span>New Accounts</span><strong>{{ reportAccountTypeCounts.new }}</strong></div>
-              </div>
-              <div class="print-revenue-summary">
-                <div><span>Room Revenue Generated:</span><strong>RM{{ tableTotals.roomRev.toFixed(2) }}</strong></div>
-                <div><span>Banquet Revenue Generated:</span><strong>RM{{ tableTotals.banquetRev.toFixed(2) }}</strong></div>
-                <div><span>Other Revenue Generated:</span><strong>RM{{ tableTotals.otherRev.toFixed(2) }}</strong></div>
-                <div><span>Total Revenue Generated:</span><strong>RM{{ tableTotals.confirm.toFixed(2) }}</strong></div>
-              </div>
-            </div>
-
-            <!-- CARDS VIEW -->
-            <div id="salesCardsView" class="sales-cards" :hidden="salesView !== 'cards' && !isPrintingReport">
+            <!-- SALES CARDS -->
+            <div id="salesCardsView" class="sales-cards">
               <p v-if="filteredSales.length === 0">No sales records found matching the criteria.</p>
               <article
                 v-for="(s, idx) in paginatedSales"
