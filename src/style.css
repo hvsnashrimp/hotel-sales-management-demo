@@ -488,89 +488,6 @@
             color: black;
         }
 
-        /* Report Table Styling - Matching Sample Document */
-        .table-responsive {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            white-space: nowrap;
-            background-color: #fff;
-        }
-
-        th,
-        td {
-            border: 1px solid #E1E7EF;
-            padding: 7px 9px;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        th {
-            background-color: var(--palette-black);
-            color: white;
-            font-weight: 600;
-        }
-
-        th.sub-header {
-            background-color: var(--palette-black);
-            color: white;
-            font-size: 12px;
-            font-weight: normal;
-        }
-
-        tr:nth-child(even) {
-            background-color: var(--palette-cream);
-        }
-
-        tr:hover {
-            background-color: #EAF2FA;
-        }
-
-        /* Normal positioning to prevent overlap issues */
-        #salesTableView th:last-child,
-        #salesTableView td:last-child {
-            position: static;
-            box-shadow: none;
-        }
-
-        .text-left {
-            text-align: left;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .rev-zero {
-            color: var(--palette-sky);
-        }
-
-        .print-report-header,
-        .print-report-summary {
-            display: none;
-        }
-
-        tfoot tr td {
-            font-weight: bold;
-            background-color: var(--palette-black);
-            color: white;
-            text-align: right;
-        }
-
-        tfoot tr td.label-foot {
-            text-align: center;
-            font-family: inherit;
-        }
-
         .pagination {
             display: flex;
             justify-content: space-between;
@@ -619,39 +536,6 @@
             align-items: flex-end;
         }
 
-        .sales-view-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin: 10px 0;
-        }
-
-        .sales-view-switch {
-            display: flex;
-            gap: 6px;
-        }
-
-        .btn-print {
-            background: var(--palette-black);
-        }
-
-        .btn-print:hover {
-            background: var(--palette-accent);
-            color: black;
-        }
-
-        .sales-view-button {
-            background: white;
-            color: var(--palette-black);
-            border: 1px solid #CFD8E3;
-        }
-
-        .sales-view-button[aria-pressed="true"] {
-            background: var(--palette-black);
-            color: white;
-        }
-
         .sales-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -662,13 +546,11 @@
             background: transparent;
         }
 
-        .sales-cards[hidden],
-        .table-responsive[hidden] {
+        .sales-cards[hidden] {
             display: none;
         }
 
-        .workspace-panel#reportPage .sales-cards,
-        .workspace-panel#reportPage .table-responsive {
+        .workspace-panel#reportPage .sales-cards {
             flex: 1 1 auto;
             min-height: 0;
             overflow-x: auto;
@@ -1257,8 +1139,7 @@
                 height: auto !important;
             }
 
-            .workspace-panel#reportPage .sales-cards,
-            .workspace-panel#reportPage .table-responsive {
+            .workspace-panel#reportPage .sales-cards {
                 flex: initial;
                 min-height: initial;
                 overflow-x: auto;
@@ -1369,182 +1250,6 @@
                 width: 145px;
                 height: 145px;
                 flex-basis: 145px;
-            }
-        }
-
-        /* Updated Print CSS */
-        @media print {
-            @page {
-                size: landscape;
-                margin: 10mm;
-            }
-
-            body {
-                background: var(--palette-grey) !important;
-                color: black !important;
-                font-family: Arial, Helvetica, sans-serif !important;
-            }
-
-            .app-shell {
-                display: block !important;
-            }
-
-            .main-content {
-                max-width: none !important;
-                padding: 0 !important;
-                overflow: visible !important;
-            }
-
-            .page-header,
-            #reportPage .section-heading {
-                display: none !important;
-            }
-
-            .logout-button {
-                display: none !important;
-            }
-
-            #formPage,
-            #dashboardPage,
-            .filter-bar,
-            .sales-view-toolbar,
-            .pagination,
-            .sale-card-actions {
-                display: none !important;
-            }
-
-            #reportPage,
-            #reportPage>.card {
-                display: block !important;
-                width: 100% !important;
-                height: auto !important;
-                overflow: visible !important;
-            }
-
-            #reportPage>.card {
-                border: 0 !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                background: transparent !important;
-            }
-
-            #salesCardsView {
-                display: none !important;
-            }
-
-            .print-report-header {
-                display: block !important;
-                margin-bottom: 6px !important;
-                color: #000 !important;
-                font-family: Arial, Helvetica, sans-serif !important;
-                font-size: 9px !important;
-                font-weight: normal !important;
-                line-height: 1.25 !important;
-            }
-
-            .print-report-header > strong {
-                display: block;
-                font-size: 11px !important;
-            }
-
-            .print-report-meta {
-                display: grid;
-                grid-template-columns: 1fr auto auto;
-                gap: 12px;
-                margin-top: 5px;
-                font-size: 8px !important;
-            }
-
-            .print-report-summary {
-                display: flex !important;
-                justify-content: space-between;
-                gap: 28px;
-                margin-top: 12px;
-                color: #000 !important;
-                font-size: 8px !important;
-            }
-
-            .print-account-summary,
-            .print-revenue-summary {
-                min-width: 220px;
-            }
-
-            .print-account-summary > strong {
-                display: block;
-                margin-bottom: 2px;
-                border-bottom: 1px solid #000;
-            }
-
-            .print-account-summary div,
-            .print-revenue-summary div {
-                display: flex;
-                justify-content: space-between;
-                gap: 18px;
-                padding: 1px 0;
-            }
-
-            .print-revenue-summary {
-                margin-left: auto;
-            }
-
-            #salesTableView,
-            #salesTableView[hidden] {
-                display: block !important;
-                overflow: visible !important;
-            }
-
-            table {
-                width: 100% !important;
-                font-family: Arial, Helvetica, sans-serif !important;
-                font-size: 8px !important;
-                font-weight: normal !important;
-                white-space: normal !important;
-                border: 1px solid #000 !important;
-            }
-
-            th,
-            td {
-                padding: 3px 3px !important;
-                border: 1px solid #000 !important;
-                color: black !important;
-                font-family: Arial, Helvetica, sans-serif !important;
-                font-size: 8px !important;
-                font-weight: normal !important;
-                line-height: 1.15 !important;
-            }
-
-            th,
-            tfoot tr td {
-                background: white !important;
-                color: black !important;
-            }
-
-            th {
-                font-weight: bold !important;
-            }
-
-            tfoot tr td,
-            tfoot tr td strong,
-            .print-report-summary,
-            .print-report-summary strong {
-                font-family: Arial, Helvetica, sans-serif !important;
-                font-size: 8px !important;
-            }
-
-            #salesTableView .print-empty-total {
-                color: transparent !important;
-            }
-
-            /* Hide the Action column headers and body cells when printing */
-            #salesTableView th:last-child,
-            #salesTableView td:last-child,
-            #salesTableView .salesperson-column,
-            #salesTableView .status-column {
-                display: none !important;
-            }
-
-            #salesTableView .classification-heading {
-                text-align: left !important;
             }
         }
 
