@@ -204,6 +204,7 @@
         }
 
         .dashboard-section > .card {
+            background: var (--palette-grey);
             width: min(100%, 1100px);
             margin-right: auto;
             margin-left: auto;
@@ -747,6 +748,7 @@
         }
 
         .yearly-chart {
+            background: var(--palette-grey);
             margin-bottom: 0;
             min-width: 0;
         }
