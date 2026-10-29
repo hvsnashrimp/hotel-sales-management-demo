@@ -944,9 +944,16 @@
         }
 
         .monthly-summary-filter select {
-            background-color: white;
+            appearance: auto;
+            background: white !important;
+            color: var(--palette-black) !important;
+            border-color: #CFD8E3 !important;
+            color-scheme: light;
+        }
+
+        .monthly-summary-filter select option {
+            background: white;
             color: var(--palette-black);
-            border-color: #CFD8E3;
         }
 
         .monthly-metrics {
