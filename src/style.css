@@ -922,7 +922,7 @@
 
         .monthly-summary-header h3 {
             margin: 0;
-            color: var(--palette-grey);
+            color: var(--palette-black);
             font-size: 17px;
         }
 
@@ -946,7 +946,7 @@
 
         .metric-card {
             min-width: 0;
-            background: var(--palette-grey);
+            background: var(--palette-cream);
             border-left: 4px solid var(--palette-sky);
             padding: 12px;
             border-radius: 4px;
